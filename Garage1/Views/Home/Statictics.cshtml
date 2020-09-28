@@ -1,0 +1,38 @@
+﻿@using Garage1.ViewModels
+@model StatitsticsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <div class="row">
+        <h2 class="text-center">Statictics</h2>
+        <div class="col-lg-offset-3 col-lg-6 thumbnail text-center" style="margin-bottom:10px">
+            <strong>Most Rented Package</strong>
+            <div>Title : <a href="~/Packag/ShowPackageCards/@Model.MostRentedPackage.ID"> @Model.MostRentedPackage.Title </a></div>
+            <div>Price for Day : @Model.MostRentedPackage.PriceForDay </div>
+            <div>Number of Times : @Model.NumberOfMostRentedPackage </div>
+        </div>
+
+        <div class="col-lg-offset-3 col-lg-6 thumbnail text-center" style="margin-bottom:10px">
+            <strong>Most Rented Car</strong>
+            <div>Title : <a href="~/Car/ShowCarsCards/@Model.MostRentedCar.ID"> @Model.MostRentedCar.Title </a></div>
+            <div>Brand : @Model.MostRentedCar.Brand </div>
+            <div>Number of Times : @Model.NumberOfMostRentedCar </div>
+        </div>
+        <div class="col-lg-offset-3 col-lg-6 thumbnail text-center" style="margin-bottom:10px">
+            <strong>Car With Max Profits</strong>
+            <div>Title : <a href="~/Car/ShowCarsCards/@Model.CarWithMaxProfit.ID"> @Model.CarWithMaxProfit.Title </a></div>
+            <div>Brand : @Model.CarWithMaxProfit.Brand </div>
+            <div>Profits : @Model.MaxCarProfit </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,53 @@
+﻿@using Garage1.Models
+@model List<Car>
+
+@{
+    int turn = 0;
+}
+
+<div class="container">
+    <div class="row" ">
+        <div class="col-lg-3">
+            <h2> Cars in the garage </h2>
+        </div>
+        <form method="get" action="/Car/ShowCarsCards" class="col-lg-offset-6 col-lg-3" style="padding-top:20px;padding-bottom:10px">
+            <input placeholder="Search By Car Brand" name="id" id="id" type="text" class="form-control" />
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model) {
+
+            <div style="margin:4px auto" class="img-thumbnail col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div><strong>Title :</strong> @item.Title </div>
+                        <div><strong>Brand :</strong> @item.Brand</div>
+                        <div><strong>Price for Day :</strong> @item.PriceForDay</div>
+                        @if (item.carIsAvailable() == false) {
+                            <div class="text-danger"><strong>&bull; Not Available</strong></div>
+                        }
+                        else {
+                            <div class="text-success"> <strong>&bull; Available</strong></div>
+                        }
+                        <div><a href="~/Car/showCarHistory/@item.ID">Show Car History</a></div>
+                        <span><a href="~/Car/EditCar/@item.ID">Update Details</a></span>
+                        <span class="text-warning"> | <a href="~/car/deletecar/@item.ID">Delete</a></span>
+                        @if (item.carIsAvailable() == true) {
+                            <span> | <a href="~/Car/ReserveCar/@item.ID">Reserve</a></span>
+                        }
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <img class="img-responsive" src="~/Content/car@((turn%4)+1).png" />
+                    </div>
+                </div>
+            </div>
+            turn++;
+        }
+    </div>
+</div>
+@Html.ActionLink("Add New Car", "AddCar", "Car")
+<br />
+@Html.ActionLink("Records View", "ShowCars", "Car")

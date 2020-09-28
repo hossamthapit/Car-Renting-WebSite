@@ -1,0 +1,45 @@
+﻿@model List<Client>
+@using Garage1.Models
+
+@{
+    Layout = "~/Views/Client/_ClientLayout.cshtml";
+    int idx = 1;
+}
+
+<div class="container">
+    <div class="row"">
+        <div class="col-lg-3">
+            <h2> Garage Clients </h2>
+        </div>
+        <form method="get" action="/Client/ShowClientsCards" class="col-lg-offset-6 col-lg-3"style="padding-top:20px;padding-bottom:10px" >
+            <input placeholder="Search By Client Name" name="id" id="id" type="text" class="form-control" />
+        </form>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model) {
+        
+            <div style="margin:4px auto" class="img-thumbnail col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div><strong>Name :</strong> @item.FirstName @item.LastName </div>
+                            <div><strong>Phone :</strong> @item.Phone</div>
+                            <div><strong>Country :</strong> @item.Country</div>
+                            <div><strong>City </strong>: @item.City</div>
+                            <div><strong>Street :</strong> @item.Street</div>
+                            <div><strong>Total Purchases :</strong> @item.clientTotalPurchase()</div>
+                            <div><a href="~/Client/ShowReservedCars/@item.NationalId">Rent History</a></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <img class="img-responsive" src="~/Content/man@((idx%7)+1).png" />
+                        </div>
+                    </div>
+            </div>
+            idx++;
+        }
+    </div>
+</div>
+<h4><a href="~/Client/showclients"  class="text-right">Records View</a></h4>

@@ -1,0 +1,33 @@
+﻿@model List<Client>
+@using Garage1.Models
+
+@{
+
+}
+
+<h2> Garage Clients </h2>
+<table class="table table-responsive">
+    <tr class="text-info">
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone</td>
+        <td>Country</td>
+        <td>City</td>
+        <td>Street</td>
+        <td>Total Purchases</td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <th>@item.FirstName</th>
+            <th>@item.LastName</th>
+            <th>@item.Phone</th>
+            <th>@item.Country</th>
+            <th>@item.City</th>
+            <th>@item.Street</th>
+            <th>@item.clientTotalPurchase() EGP</th>
+            </tr>
+    }
+</table>
+
+<h4><a href="~/Client/ShowClientsCards" class="text-right">Cards View</a></h4>

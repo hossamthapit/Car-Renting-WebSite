@@ -1,0 +1,63 @@
+﻿@model Package
+@{
+    ViewBag.Title = "Add Package";
+    context data = new context();
+    SelectList list = new SelectList(data.Cars.ToList());
+    var mylist = data.Cars.ToList();
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <h2>Add Package</h2>
+                <div class="col-lg-6 col-lg-offset-2">
+                    <br />
+                    <form method="post" action="/package/AddPackage">
+                        @Html.LabelFor(m => Model.Title)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.Title)</div>
+                        @Html.EditorFor(m => Model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        <br />
+                        @Html.LabelFor(m => Model.PriceForDay)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.PriceForDay)</div>
+                        @Html.EditorFor(m => Model.PriceForDay , new { htmlAttributes = new { @class = "form-control" } })
+                        <br />
+                        @*@Html.LabelFor(m => Model.Cars[0].Title)
+                        <br />
+                        @Html.DropDownListFor(m => Model.Cars[0].ID, list, new { @class = "form-control" })*@
+                        <label>Car 1</label>
+                        <br />
+                        <select name="car1_id" class="form-control">
+                            @foreach (var item in mylist) {
+                                <option value="@item.ID">@item.Title</option>
+                            }
+                        </select>
+                        <br />
+                        <label>Car 2</label>
+                        <br />
+                        <select name="car2_id" class="form-control">
+                            @foreach (var item in mylist) {
+                                <option value="@item.ID">@item.Title</option>
+                            }
+                        </select>
+                        <br />
+                        <label>Car 3</label>
+                        <br />
+                        <select name="car3_id" class="form-control">
+                            @foreach (var item in mylist) {
+                                <option value="@item.ID">@item.Title</option>
+                            }
+                        </select>
+                        <br />
+                            <input type="submit" class="form-control btn btn-success" />
+                   </form>
+              </div>
+                    <div class="col-lg-4">
+                    <img src="~/Content/CarPackage1.png" class="img-responsive" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

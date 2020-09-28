@@ -1,0 +1,69 @@
+﻿@using Garage1.ViewModels
+@model ClientReserveCarViewModel
+@{
+     int id = int.Parse(TempData["ID"].ToString());
+   
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <form method="post" action="~/Car/ReserveCar/@id">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @Html.LabelFor(m => Model.FirstName)
+                         <div class="text-danger">@Html.ValidationMessageFor(m => Model.FirstName)</div>
+                        @Html.EditorFor(m => Model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        @Html.LabelFor(m => Model.LastName)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.LastName)</div>
+                        @Html.EditorFor(m => Model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        @Html.LabelFor(m => Model.NationalId)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.NationalId)</div>
+                        @Html.EditorFor(m => Model.NationalId, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        @Html.LabelFor(m => Model.Phone)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.Phone)</div>
+                        @Html.EditorFor(m => Model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        
+                     </div>
+                    <div class="col-lg-6">
+                        @Html.LabelFor(m => Model.Country)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.Country)</div>
+                        @Html.EditorFor(m => Model.Country, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                        <br />
+                        @Html.LabelFor(m => Model.City)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.City)</div>
+                        @Html.EditorFor(m => Model.City, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        @Html.LabelFor(m => Model.Street)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.Street)</div>
+                        @Html.EditorFor(m => Model.Street, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        @Html.LabelFor(m => Model.Period)
+                        <div class="text-danger">@Html.ValidationMessageFor(m => Model.Period)</div>
+                        @Html.EditorFor(m => Model.Period, new { htmlAttributes = new { @class = "form-control" } })
+
+                        <br />
+                        <input type="submit" class="form-control btn btn-success" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

@@ -1,0 +1,48 @@
+﻿@using Garage1.ViewModels
+@model ShowClientReservedCarViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Client Rented Cars History</h2>
+
+<table class="table table-responsive">
+    <tr class="text-info">
+        <td>Car Title</td>
+        <td>Rent date</td>
+        <td>Period</td>
+        <td>Price</td>
+        <td>Other</td>
+    </tr>
+
+
+    @foreach (var item in Model.cars) {
+        <tr>
+            @{int x = item.period;}
+            @{double y = item.PriceForDay;}
+            <th>@item.Title</th>
+            <th>@item.RentDate.Day / @item.RentDate.Month / @item.RentDate.Year</th>
+            <th>@item.period</th>
+            <th>@(x * y)</th>
+            <th></th>
+        </tr>
+    }
+    @foreach (var item1 in Model.packages) {
+        foreach (var item in item1.Cars) {
+        <tr>
+            @{int x = item.period;}
+            @{double y = item.PriceForDay;}
+            <th>@item.Title</th>
+            <th>@item.RentDate.Day / @item.RentDate.Month / @item.RentDate.Year</th>
+            <th>@item.period</th>
+            <th>@(x * y)</th>
+            <th>In Package</th>
+        </tr>
+       }
+  }
+
+</table>
+
+
+

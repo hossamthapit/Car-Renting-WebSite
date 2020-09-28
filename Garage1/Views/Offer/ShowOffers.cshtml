@@ -1,0 +1,28 @@
+﻿@model List<Offer>
+
+@{
+
+}
+
+<h2>Offers by the garage</h2>
+
+<table class="table table-responsive">
+    <tr class="text-info">
+        <td>Title</td>
+        <td>Limit</td>
+        <td>Discount</td>
+        <td>Delete</td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <th>@item.Title</th>
+            <th>@item.Limit</th>
+            <th>@item.Discount</th>
+            <th><a href="~/offer/DeleteOffer/@item.ID">Delete</a></th>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Add Offer", "AddOffer", "Offer")

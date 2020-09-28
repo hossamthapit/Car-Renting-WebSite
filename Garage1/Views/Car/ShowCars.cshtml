@@ -1,0 +1,48 @@
+﻿@using Garage1.Models
+@model List<Car>
+
+@{
+
+}
+
+<h2>Cars in the garage</h2>
+
+<table class="table table-responsive">
+    <tr class="text-info">
+        <td>Name</td>
+        <td>Brand</td>
+        <td>Price For Day</td>
+        <td>State</td>
+        <td>Update Details</td>
+        <td>Other</td>
+        <td>Delete</td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <th>@item.Title</th>
+            <th>@item.Brand</th>
+            <th>@item.PriceForDay</th>
+            @if (item.carIsAvailable() == false) {
+                <th class="text-danger"><strong>&bull;</strong> Not Available</th>
+            }
+            else {
+                <th class="text-success"> <strong>&bull;</strong> Available</th>
+            }
+            <th><a href="~/Car/EditCar/@item.ID">Update Details</a></th>
+            @if (item.carIsAvailable() == true) {
+                <th> <a href="~/Car/ReserveCar/@item.ID">Reserve</a></th>
+            }
+            else {
+                <th></th>
+            }
+            <th class="text-warning"> <a href="~/car/deletecar/@item.ID">Delete</a></th>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Add New Car", "AddCar", "Car")
+<br />
+@Html.ActionLink("Cards View", "ShowCarsCards", "Car")
+

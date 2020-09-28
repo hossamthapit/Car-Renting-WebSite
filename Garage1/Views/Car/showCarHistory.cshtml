@@ -1,0 +1,29 @@
+﻿@using Garage1.Models
+@model List<Client>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Car History</h2>
+
+<table class="table table-responsive">
+    <tr class="text-info">
+        <td>Client Name</td>
+        <td>Client Phone</td>
+        <td>Client Country</td>
+        <td>Client City</td>
+    </tr>
+
+
+    @foreach (var item in Model) {
+        <tr>
+            <th>@item.FirstName @item.LastName</th>
+            <th>@item.Phone </th>
+            <th>@item.Country</th>
+            <th>@item.City</th>
+        </tr>
+    }
+
+</table>
